@@ -4,5 +4,16 @@ export interface Item {
 }
 
 export const uniqueFilter = (array: Item[]): Item[] => {
-  throw new Error('Not implemented');
+  const uniqueItems: Item[] = [];
+
+  const seenIds: { [key: number]: boolean } = {};
+
+  for (const item of array) {
+    if (!seenIds[item.id]) {
+      seenIds[item.id] = true;
+      uniqueItems.push(item);
+    }
+  }
+
+  return uniqueItems;
 };
